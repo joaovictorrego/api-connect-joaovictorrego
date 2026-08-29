@@ -1,0 +1,76 @@
+[
+  {
+    "scenario": "criacao-sucesso",
+    "request": {
+      "method": "POST",
+      "url": "http://localhost:3000/api/users",
+      "body": {
+        "name": "Marina Oliveira",
+        "email": "marina.oliveira@example.com"
+      }
+    },
+    "status": 201,
+    "response": {
+      "data": {
+        "id": 3,
+        "name": "Marina Oliveira",
+        "email": "marina.oliveira@example.com"
+      }
+    }
+  },
+  {
+    "scenario": "criacao-sem-email",
+    "request": {
+      "method": "POST",
+      "url": "http://localhost:3000/api/users",
+      "body": {
+        "name": "Usuário sem e-mail"
+      }
+    },
+    "status": 400,
+    "response": {
+      "error": "O campo email é obrigatório e não pode estar vazio"
+    }
+  },
+  {
+    "scenario": "listagem-geral",
+    "request": {
+      "method": "GET",
+      "url": "http://localhost:3000/api/users",
+      "body": null
+    },
+    "status": 200,
+    "response": {
+      "data": [
+        {
+          "id": 1,
+          "name": "Ana Souza",
+          "email": "ana.souza@example.com"
+        },
+        {
+          "id": 2,
+          "name": "Bruno Lima",
+          "email": "bruno.lima@example.com"
+        },
+        {
+          "id": 3,
+          "name": "Marina Oliveira",
+          "email": "marina.oliveira@example.com"
+        }
+      ],
+      "total": 3
+    }
+  },
+  {
+    "scenario": "busca-id-inexistente",
+    "request": {
+      "method": "GET",
+      "url": "http://localhost:3000/api/users/99999",
+      "body": null
+    },
+    "status": 404,
+    "response": {
+      "error": "Usuário não encontrado"
+    }
+  }
+]
